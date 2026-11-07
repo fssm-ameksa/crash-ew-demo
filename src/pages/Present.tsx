@@ -9,6 +9,18 @@ import { AuthorLine, Authors } from '../authors'
 import { ConformalPlayground } from './Decision'
 import { LiveStream } from './Events'
 import { STAGES } from './Workflow'
+import type { StageId } from '../workflowDiagram'
+import { WorkflowDiagram } from '../workflowDiagram'
+
+function WorkflowSlide() {
+  const [active, setActive] = useState<StageId>('decision')
+  return (
+    <div>
+      <div className="wf-figure"><WorkflowDiagram active={active} onSelect={setActive} /></div>
+      <p className="lead-sm"><b>{STAGES[active].n} · {STAGES[active].title}:</b> {STAGES[active].body}</p>
+    </div>
+  )
+}
 
 function TitleSlide() {
   const { data } = useApi<Overview>('results/overview.json')
@@ -35,10 +47,7 @@ const SLIDES: { title: string; note: string; body: ReactNode }[] = [
   { title: '', note: 'Title', body: <TitleSlide /> },
   { title: 'Published crash predictors report > 0.9. Why?', note: 'Leakage',
     body: <><p className="lead">Same model, same 10 Hz samples — only the train/test split changes.</p><AuditChart height={360} /></> },
-  { title: 'A leakage-free protocol', note: 'Workflow', body: (
-    <div className="workflow compact">
-      {STAGES.map((s) => <div key={s.n} className="wf static"><span className="wf-head">{s.n} · {s.title}</span><span className="wf-body">{s.body}</span></div>)}
-    </div>) },
+  { title: 'A leakage-free protocol', note: 'Workflow', body: <WorkflowSlide /> },
   { title: 'Onset is detectable — mainly in the last 2–3 s', note: 'T1',
     body: <><p className="lead">Toggle “RF, no gas”: without the pedal channel the 5 s signal falls to the placebo level.</p><OnsetChart height={340} /></> },
   { title: 'Escalation is decided after the conflict starts', note: 'T2',

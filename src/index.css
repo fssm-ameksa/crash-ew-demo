@@ -184,3 +184,15 @@ main { flex: 1; }
 .author-line-aff { font-family: var(--sans); font-style: italic; color: var(--muted); font-size: 0.78rem; }
 .slide-foot .author-line { margin-left: 1rem; flex: 1; text-align: center; font-size: 0.78rem; }
 .slide-foot .author-line + .keys { margin-left: 0; }
+
+/* workflow diagram (SVG) */
+.page.wide { max-width: 1480px; }
+.wf-figure { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 0.8rem 0.6rem; margin: 0.8rem 0 1rem; }
+.wf-diagram { width: 100%; height: auto; display: block; }
+.wf-stage { outline: none; }
+.wf-stage .wf-box, .wf-stage .wf-hit { transition: filter 0.15s, stroke-width 0.15s; }
+.wf-stage:hover .wf-box { filter: brightness(0.97); }
+.wf-stage:hover .wf-hit { fill: rgba(42, 111, 176, 0.05); }
+.wf-stage.on .wf-box { filter: drop-shadow(0 0 10px rgba(42, 111, 176, 0.55)); }
+.wf-stage.on .wf-hit { fill: rgba(42, 111, 176, 0.08); stroke: rgba(42, 111, 176, 0.5); stroke-width: 3; }
+.wf-stage:focus-visible .wf-box, .wf-stage:focus-visible .wf-hit { stroke: #2a6fb0; stroke-width: 6; }
