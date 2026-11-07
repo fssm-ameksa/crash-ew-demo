@@ -1,0 +1,1 @@
+{"events":828,"crashes":68,"near_crashes":760,"vehicles":90,"channels":16,"hz":10,"onset_auc":{"h0":0.6996,"h0_ci":[0.678,0.723],"h5":0.5816,"placebo":0.5321},"escalation_pr":{"tau2":0.2248,"tau2_ci":[0.1643,0.3481],"tau_m2":0.1391,"prevalence":0.0783},"audit":{"random_rows":1.0,"grouped_vehicle":0.6377}}
